@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "The Art Blog. Another project of projectDemo",
   "main": "app.js",
+  "engines": {
+    "node": "10.15.3"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon app.js",
