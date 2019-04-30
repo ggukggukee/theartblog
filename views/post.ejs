@@ -1,0 +1,29 @@
+<% include partials/header %>
+
+<div class="container">
+    <div class="card my-3">
+        <img src="<%= foundPost.image %>" class="card-img-top" alt="...">
+        <div class="card-body">
+            <div class="d-flex align-items-center">
+                <h5 class="card-title"><%= foundPost.title %></h5>
+                <p class="text-muted ml-auto"><%= foundPost.user %></p>
+            </div>
+            <p class="card-text"><%= foundPost.content %></p>
+            <div class="d-flex align-items-center">
+                <% if (!user) { %>
+                <%} else if (user.user == foundPost.user) { %>
+                <a href="/<%= foundPost._id %>/edit" class="btn btn-success mr-2">Edit</a>
+                <form action="/<%= foundPost._id %>?_method=DELETE" method="POST">
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+                <% } %>
+            </div>
+            <% if (typeof foundPost.edited !== 'undefined') {%>
+            <p class="card-text mt-2"><small class="text-muted">Posted: <%= foundPost.date.getHours() %>:<%= foundPost.date.getMinutes() %> <%= foundPost.date.getDate() %>.<%= foundPost.date.getMonth() %>.<%= foundPost.date.getFullYear() %> Edited: <%= foundPost.edited.getHours() %>:<%= foundPost.edited.getMinutes() %> <%= foundPost.edited.getDate() %>.<%= foundPost.edited.getMonth() %>.<%= foundPost.edited.getFullYear() %></small></p>
+            <%} else if (typeof foundPost.edited == 'undefined') {%>
+            <p class="card-text mt-2"><small class="text-muted">Posted: <%= foundPost.date.getHours() %>:<%= foundPost.date.getMinutes() %> <%= foundPost.date.getDate() %>.<%= foundPost.date.getMonth() %>.<%= foundPost.date.getFullYear() %></small></p>
+            <% } %>             
+        </div>
+    </div>
+
+<% include partials/footer %>

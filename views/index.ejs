@@ -1,0 +1,30 @@
+<% include partials/header %>
+
+<div class="container">
+    <% if(success && success.length > 0){ %>
+        <div class="alert alert-success my-3" role="alert">
+            <%= success %>
+        </div>
+    <% } %>
+    <% for(var i = 0; i < allPosts.length; i++) { %>
+        <div class="card my-3">
+            <img src="<%= allPosts[i].image %>" class="card-img-top" alt="...">
+            <div class="card-body">
+                <div class="d-flex align-items-center">
+                    <h5 class="card-title"><%= allPosts[i].title %></h5>
+                    <p class="text-muted ml-auto"><%= allPosts[i].user %></p>
+                </div>
+                <p class="card-text"><%= allPosts[i].content.substring(0,200) %> ...</p>
+                <div class="d-flex align-items-center">
+                    <a href="/<%= allPosts[i]._id %>" class="btn btn-primary">Read More</a>
+                </div>
+                <% if (typeof allPosts[i].edited !== 'undefined') {%>
+                <p class="card-text mt-2"><small class="text-muted">Posted: <%= allPosts[i].date.getHours() %>:<%= allPosts[i].date.getMinutes() %> <%= allPosts[i].date.getDate() %>.<%= allPosts[i].date.getMonth() %>.<%= allPosts[i].date.getFullYear() %> Edited: <%= allPosts[i].edited.getHours() %>:<%= allPosts[i].edited.getMinutes() %> <%= allPosts[i].edited.getDate() %>.<%= allPosts[i].edited.getMonth() %>.<%= allPosts[i].edited.getFullYear() %></small></p>
+                <%} else if (typeof allPosts[i].edited == 'undefined') {%>
+                <p class="card-text mt-2"><small class="text-muted">Posted: <%= allPosts[i].date.getHours() %>:<%= allPosts[i].date.getMinutes() %> <%= allPosts[i].date.getDate() %>.<%= allPosts[i].date.getMonth() %>.<%= allPosts[i].date.getFullYear() %></small></p>
+                <% } %>
+            </div>
+        </div>
+    <% } %>
+
+<% include partials/footer %>

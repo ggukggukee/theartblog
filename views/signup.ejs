@@ -1,0 +1,38 @@
+<% include partials/header %>
+
+<div class="container">
+    <% if(error && error.length > 0){ %>
+        <div class="alert alert-danger my-3" role="alert">
+            <%= error %>
+        </div>
+    <% } %>
+</div>
+<div class="container">
+    <h1 class="text-center my-3">Sign Up</h1>
+    <form action="/signup" method="POST">
+        <div class="form-signup mx-auto">
+            <div class="form-row">
+                <div class="form-group mx-auto col-md-6">
+                    <label for="inputUsername1">Username</label>
+                    <input id="inputUsername1" class="form-control" placeholder="Username" type="text" name="username" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group mx-auto col-md-6">
+                    <label for="inputEmail1">E-mail</label>
+                    <input id="inputEmail1" class="form-control" placeholder="E-mail" type="email" name="email" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group mx-auto col-md-6">
+                    <label for="inputPassword1">Password</label>
+                    <input id="inputPassword1" class="form-control" placeholder="Password" type="password" name="password" required>
+                    <div class="form-group">
+                    <button type="submit" class="btn btn-primary my-3">Sign Up</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<% include partials/footer %>
